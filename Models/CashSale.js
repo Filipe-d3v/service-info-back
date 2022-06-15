@@ -1,7 +1,8 @@
 const mongoose = require('../db/conn')
 const { Schema } = mongoose
 
-const Product = mongoose.Types(
+const Product = mongoose.Types({
+}
     
 )
 
