@@ -1,10 +1,7 @@
 const mongoose = require('../db/conn')
 const { Schema } = mongoose
 
-const Product = mongoose.Types({
-}
-    
-)
+const Product = Schema({ name: String, price: Number})
 
 const CashSale = mongoose.model(
     'CashSale',
@@ -15,7 +12,7 @@ const CashSale = mongoose.model(
         },
         total: {
             type: Number,
-            required: true
+            required: false
         },
         products: {
             type: [Product],

@@ -20,6 +20,6 @@ const cashSaleRoutes = require('./routes/CashSaleRoutes')
 app.use('/users', userRoutes)
 app.use('/products', productRoutes)
 app.use('/techservices', technicalServiceRoutes)
-app.use('/cashsale', cashSaleRoutes)
+app.use('/cashsales', cashSaleRoutes)
 
 app.listen(5050)
