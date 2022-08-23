@@ -1,23 +1,22 @@
 const mongoose = require('../db/conn')
 const { Schema } = mongoose
 
-const Product = Schema({ name: String, price: Number})
-
 const CashSale = mongoose.model(
     'CashSale',
     new Schema({
         date: {
-            type: Date,
+            type: String,
             required: true
         },
         total: {
             type: Number,
             required: false
         },
-        products: {
-            type: [Product],
+        products: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product',
             required: true
-        },
+        }],
         type_payment: {
             type: String,
             required: true

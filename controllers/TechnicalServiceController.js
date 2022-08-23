@@ -33,11 +33,9 @@ module.exports = class TechnicalServiceController {
 
         const token = getToken(req)
         const user = await getUserByToken(token)
-        
-        const localData = new Date().toLocaleString()
 
         const techService = new TechnicalService({
-            date: localData,
+            date: new Date().toLocaleString(),
             clientName,
             clientPhone,
             clientAdress,

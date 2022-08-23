@@ -1,29 +1,33 @@
 const multer = require('multer')
-const patch = require('path')
+const crypto = require('crypto')
 
-//Destino para imagens
-const imageStorage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        let folder = ''
-        if(req.baseUrl.includes('users')){
-            folder = 'users'
-        }else if(req.baseUrl.includes('products')){
-            folder = 'products'
-        }
+const storageTypes = {
+  local: multer.diskStorage({
+    destination: function (req, file, cb) {
+      let folder = ''
+      if (req.baseUrl.includes('products')) {
+        folder = 'products'
+      }
 
-        cb(null, `public/images/${folder}`)
+      cb(null, `public/images/${folder}`)
     },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + String(Math.floor(Math.random() * 100)) + patch.extname(file.originalname)) 
+    filename: (req, file, cb) => {
+      crypto.randomBytes(16, (err, hash) => {
+        if (err) cb(err)
+        const fileName = `${hash.toString('hex')}-${file.originalname}`
+        cb(null, fileName)
+      })
     }
-})
+  })
+}
 
-const imageUpload = multer({ storage: imageStorage, fileFilter(req, file, cb) {
-    if(!file.originalname.match(/\.(png|jpg|webp|JPG|jpeg)$/)) {
-        return cb(new Error('Apenas imagens JPG e PNG são permitidas!'))
+const imageUploadLocal = multer({
+  storage: storageTypes.local, fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(png|jpg|jpeg|svg|JPG)$/)) {
+      return cb(new Error('Apenas imagens JPG, PNG, JPEG e SVG são permitidas!'))
     }
     cb(undefined, true)
-},
+  },
 })
 
-module.exports = imageUpload
+module.exports = imageUploadLocal

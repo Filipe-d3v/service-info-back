@@ -5,10 +5,10 @@ const ForwardSale = mongoose.model(
     'ForwardSale',
     new Schema({
         date: {
-            type: Date,
+            type: String,
             required: true
         },
-        value: {
+        total: {
             type: Number,
             required: true
         },
@@ -28,9 +28,15 @@ const ForwardSale = mongoose.model(
             type: String,
             required: false
         },
-        products: {
-            type: Array,
+        products: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product',
             required: true
+        }],
+        status: {
+            type: Boolean,
+            required: true,
+            default: false
         },
         user: Object,
         

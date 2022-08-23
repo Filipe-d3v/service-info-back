@@ -8,7 +8,7 @@ const Product = mongoose.model(
             type: String,
             required: true
         },
-        type: {
+        dpt: {
             type: String,
             required: true
         },
@@ -22,6 +22,10 @@ const Product = mongoose.model(
         },
         price: {
             type: Number,
+            required: true
+        },
+        image: {
+            type: String,
             required: true
         },
     },
