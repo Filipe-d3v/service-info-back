@@ -24,4 +24,4 @@ app.use('/techservices', technicalServiceRoutes)
 app.use('/cashsales', cashSaleRoutes)
 app.use('/forwardsales', forwardSaleRoutes)
 
-app.listen(5050)
+app.listen(process.env.PORT || 5050)
