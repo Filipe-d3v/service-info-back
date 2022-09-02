@@ -3,11 +3,10 @@ const cors = require('cors')
 
 const app = express()
 
-//JSON response
 app.use(express.json())
 
-//Resolver Cors
-//app.use(cors("Access-Control-Allow-Origin", "*"))
+
+app.use(cors("Access-Control-Allow-Origin", "*"))
 
 app.use(express.static('public'))
 
