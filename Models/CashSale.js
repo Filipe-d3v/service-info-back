@@ -25,6 +25,6 @@ const CashSale = mongoose.model(
     },
     {timestamps: true},
     )
-)
+) 
 
 module.exports = CashSale

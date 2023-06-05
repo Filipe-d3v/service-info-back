@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const userController = require('../controllers/UerController')
+const userController = require('../controllers/UserController')
 
 const verifyToken = require('../helpers/verify-token')
 const imageUpload = require('../helpers/image-upload')

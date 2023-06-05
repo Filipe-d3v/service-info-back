@@ -7,7 +7,7 @@ module.exports = class ProductController {
   static async createProduct(req, res) {
     const { name, dpt, description, quantity, price } = req.body
     
-    if(!req.file) {
+    if(!req.file.filename) {
       res.status(422).json({message: 'Insira uma foto para o produto!'})
       return
     }

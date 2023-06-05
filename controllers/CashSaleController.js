@@ -8,6 +8,8 @@ module.exports = class CashSaleController {
   static async create(req, res) {
     const { total, type_payment, products } = req.body
     console.log(total)
+    console.log(type_payment)
+    console.log(products)
 
     if (!type_payment) {
       res.status(422).json({ message: 'Informe o tipo de pagamento!' })
@@ -16,6 +18,8 @@ module.exports = class CashSaleController {
 
     const token = getToken(req)
     const user = await getUserByToken(token)
+
+    console.log(user)
 
     const cashsale = new CashSale({
       date: new Date().toLocaleString(),
