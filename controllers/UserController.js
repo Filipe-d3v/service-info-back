@@ -111,6 +111,7 @@ module.exports = class UserController {
 
             currentUser = await User.findById(decoded.id)
             currentUser.password = undefined
+            
         } else {
             currentUser = null
         }

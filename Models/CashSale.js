@@ -5,21 +5,19 @@ const CashSale = mongoose.model(
     'CashSale',
     new Schema({
         date: {
-            type: String,
+            type: Date,
             required: true
         },
         total: {
             type: Number,
             required: false
         },
-        products: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Product',
-            required: true
-        }],
+        products: {
+            type: String,
+        },
         type_payment: {
             type: String,
-            required: true
+            required: false
         },
         user: Object,
     },
